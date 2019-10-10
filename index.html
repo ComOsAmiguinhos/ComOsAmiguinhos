@@ -7,6 +7,9 @@
     <title>Aprendendo a programar com os amiguinhos</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
         span {
             cursor: pointer;
         }
@@ -35,6 +38,12 @@
     <header>
         <h1>Aprendendo a programar com os amiguinhos</h1>
     </header>
+    <nav>
+        <a href wm-nav="integrantes/jordy.html">Jordy Araújo</a> |
+    <!--
+        <a href wm-nav="integrantes/NOME.html">NOME</a> |
+    -->
+    </nav>
     <table>
         <thead>
             <tr>
@@ -44,6 +53,11 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>Jordy Araújo de Alcântara</td>
+                <td>https://github.com/JordyAraujo</td>
+                <td>https://jordyaraujo.github.io</td>
+            </tr>
         <!--        
             <tr>
                 <td>NOME</td>
@@ -53,8 +67,21 @@
         -->
         </tbody>
     </table>
+    <section id="conteudo"></section>
     <footer>
         <a href="https://www.google.com.br" target="_blank">Aprendendo a programar com os amiguinhos</a>
     </footer>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault()
+                fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
 </body>
 </html>
